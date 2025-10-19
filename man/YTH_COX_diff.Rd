@@ -1,5 +1,5 @@
-\name{YTH_haz_complete}
-\alias{YTH_haz_complete}
+\name{YTH_COX_diff}
+\alias{YTH_COX_diff}
 \title{Nonparametric separable direct and indirect effects via hazard NPMLE}
 \description{
 Computes separable DE and IE effects using a nonparametric hazard-based approach
@@ -25,3 +25,4 @@ A list with elements: \code{DE}, \code{IE}, \code{DE.sd}, \code{IE.sd}.
 \examples{
 ## See README for a full example.
 }
+
