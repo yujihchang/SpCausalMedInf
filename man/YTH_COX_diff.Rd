@@ -44,11 +44,11 @@ set.seed(123)
 ee <- runif(nrow(work_ttem), 0, 0.001)
 
 ## Map columns (adjust names to your actual data)
-X1 <- work_ttem$hcc.time + ee
-X2 <- work_ttem$die.time + ee
-D  <- work_ttem$dieall.case
-X  <- as.matrix(work_ttem$HBSAG)  ## if multiple covariates: as.matrix(work_ttem[, c("HBSAG","...")])
-A  <- work_ttem$AGE
+X1 <- work_ttem$X1 + ee
+X2 <- work_ttem$X2 + ee
+D  <- work_ttem$D2
+X  <- as.matrix(work_ttem[,-(1:5)])  ## if multiple covariates: as.matrix(work_ttem[, c("HBSAG","...")])
+A  <- work_ttem$X2*0 ## if there is no truncation
 t  <- sort(X2)
 
 ## Run
@@ -67,5 +67,6 @@ NPMLE_set <- YTH_COX_diff(t, A, X1, X2, D, X,
 # Note: 'setting' supplies values for X[, -1] in that column order.
 }
 }
+
 
 
