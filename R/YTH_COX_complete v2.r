@@ -1,13 +1,7 @@
-library("survival")
+
 
 
 YTH_COX_diff=function(time,A,X1,X2,D,X,expor=c(za1,za2,zb1,zb2),center="TRUE",setting=NULL,EFFECT,saving="FALSE"){
-#time=P.time;X=matrix(Za);expor=c(1,2,1,2);EFFECT=c("DE","IE");center="TRUE";setting=NULL;saving="FALSE"
-
-
-#t=tt; A=dat[,1]*0; X1=dat[,1]; X2=dat[,3]; D=dat[,4];X=as.matrix(x);expor=c(0,1,0,1);EFFECT=c("IE","DE");center="TRUE";setting=NULL;saving="FALSE"
-
-
 
 DE.out=IE.out=DE.sd.out=IE.sd.out=NULL
 za1=expor[1];za2=expor[2];zb1=expor[3];zb2=expor[4]
@@ -15,14 +9,13 @@ n=length(X2)
 DL1X=DL0X=rep(0,n)
 dLan1X=dLan0X=0
 #########################################################
+X2=X2+runif(n,0,0.01)
 SX2=sort(X2,index.return=TRUE)
 X1=X1[SX2$ix]
 A=A[SX2$ix]
 X=as.matrix(X[SX2$ix,])
 Dperp=D=D[SX2$ix]
 X2=SX2$x
-########################################################
-#center="TRUE";X=as.matrix(XM);expor=c(1,2,1,2);EFFECT=c("DE","IE");t=time;expor=c(1,2,1,2)
 
 
 X1M=matrix(X1,n,n)
@@ -73,12 +66,12 @@ if(saving=="TRUE"){gc()}
 DL0X_za2=DL0X_za1=DL0X
 Y20=X2
 Y20[dN21==1]=X1[dN21==1]
-##
 
-#
+
+
 B20=NULL;D20=NULL;diff_dR0=NULL;X20=A20=NULL
-##
-if(length(Y20)>0){ #¹w¨¾¨S¦³ workL
+
+if(length(Y20)>0){ #Â¹wÂ¨Â¾Â¨SÂ¦Â³ workL
 #dLan0X=rep(0,length(Y20))
 D20=D
 D20[dN21==1]=0
@@ -134,7 +127,7 @@ dLan0X_za1=ifelse(is.na(dLan0X_za1),0,dLan0X_za1)
 DL0X_za1[workL0]=dLan0X_za1
 }
 #-----##-----##-----##-----##-----##-----##-----##-----##-----##-----##-----##-----##-----##-----##
-   }  #  for " if "¹w¨¾¨S¦³ workL
+   }  #  for " if "Â¹wÂ¨Â¾Â¨SÂ¦Â³ workL
 ########################################################################################################
 if(saving=="TRUE"){gc()}
 
@@ -808,3 +801,4 @@ LA_Sz1_za1=LA_Sz1_za1
 )
 return(report)
 }
+
