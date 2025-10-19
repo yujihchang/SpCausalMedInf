@@ -31,5 +31,46 @@ and (when both effects are requested) cumulative hazard components
 \code{LA_Sz0_za2}, \code{LA_Sz1_za2}, \code{LA_Sz0_za1}, \code{LA_Sz1_za1}.
 }
 \examples{
-## See README for a full example.
+\dontrun{
+## --- Example using the bundled dataset expdata ---------------------------
+## If you placed expdata.rda under the package's data/ folder, you can:
+data("expdata", package = "SpCausalMedInf")
+
+## Use the dataset
+work_ttem <- expdata
+
+## Add a tiny jitter to avoid tied times
+set.seed(123)
+ee <- runif(nrow(work_ttem), 0, 0.001)
+
+## Map columns (adjust names to your actual data)
+X1 <- work_ttem$hcc.time + ee
+X2 <- work_ttem$die.time + ee
+D  <- work_ttem$dieall.case
+X  <- as.matrix(work_ttem$HBSAG)  ## if multiple covariates: as.matrix(work_ttem[, c("HBSAG","...")])
+A  <- work_ttem$AGE
+t  <- sort(X2)
+
+## Run
+NPMLE <- YTH_COX_diff(
+  time   = t,
+  A      = A,
+  X1     = X1,
+  X2     = X2,
+  D      = D,
+  X      = X,
+  expor  = c(0,1,0,1),     # ZA=0, ZB=1
+  center = "TRUE",
+  setting = NULL,
+  EFFECT = c("DE","IE")
+)
+
+## Peek results
+lapply(NPMLE, function(x) if (is.null(x)) NULL else head(x, 6))
+
+## --- Alternative: load expdata.rda from a path (if not using package data/)
+## load("path/to/expdata.rda")  # creates object 'expdata'
+## work_ttem <- expdata
+## (then do the same steps as above)
+}
 }
