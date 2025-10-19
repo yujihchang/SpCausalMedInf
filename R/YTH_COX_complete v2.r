@@ -1,4 +1,3 @@
-
 YTH_COX_diff=function(time,A,X1,X2,D,X,expor=c(za1,za2,zb1,zb2),center="TRUE",setting=NULL,EFFECT,saving="FALSE"){
 
 DE.out=IE.out=DE.sd.out=IE.sd.out=NULL
@@ -800,4 +799,5 @@ LA_Sz1_za1=LA_Sz1_za1
 )
 return(report)
 }
+
 
