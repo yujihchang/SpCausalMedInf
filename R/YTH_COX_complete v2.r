@@ -1,6 +1,4 @@
 
-
-
 YTH_COX_diff=function(time,A,X1,X2,D,X,expor=c(za1,za2,zb1,zb2),center="TRUE",setting=NULL,EFFECT,saving="FALSE"){
 
 DE.out=IE.out=DE.sd.out=IE.sd.out=NULL
@@ -9,7 +7,7 @@ n=length(X2)
 DL1X=DL0X=rep(0,n)
 dLan1X=dLan0X=0
 #########################################################
-X2=X2+runif(n,0,0.01)
+ X2=X2+runif(n,0,0.01)
 SX2=sort(X2,index.return=TRUE)
 X1=X1[SX2$ix]
 A=A[SX2$ix]
@@ -51,7 +49,7 @@ if(center=="SET")  sb1_za2=sum(B21$coef*c(za2,setting))
 dLan1X_za2=diff_dR1*exp(sb1_za2)
 DL1X_za2[dN21==1]=dLan1X_za2
 #SSS=sort(X2,index.return=TRUE);plot(SSS$x,cumsum(DL1X[SSS$ix]),type="s")
-#-----##-----##-----##-----##-----##-----##-----##-----##-----##-----##-----##-----##-----##-----##
+ 
 if(sum(EFFECT%in%"DE")==1){
 DL1X_za1=DL1X
 if(center=="FALSE") sb1_za1=sum(B21$coef*c(za1,rep(0,(p-1))) )
@@ -66,12 +64,12 @@ if(saving=="TRUE"){gc()}
 DL0X_za2=DL0X_za1=DL0X
 Y20=X2
 Y20[dN21==1]=X1[dN21==1]
+##
 
-
-
+#
 B20=NULL;D20=NULL;diff_dR0=NULL;X20=A20=NULL
-
-if(length(Y20)>0){ #¹w¨¾¨S¦³ workL
+##
+if(length(Y20)>0){ # w   S   workL
 #dLan0X=rep(0,length(Y20))
 D20=D
 D20[dN21==1]=0
@@ -127,7 +125,7 @@ dLan0X_za1=ifelse(is.na(dLan0X_za1),0,dLan0X_za1)
 DL0X_za1[workL0]=dLan0X_za1
 }
 #-----##-----##-----##-----##-----##-----##-----##-----##-----##-----##-----##-----##-----##-----##
-   }  #  for " if "¹w¨¾¨S¦³ workL
+   }  #  for " if " w   S   workL
 ########################################################################################################
 if(saving=="TRUE"){gc()}
 
@@ -801,4 +799,3 @@ LA_Sz1_za1=LA_Sz1_za1
 )
 return(report)
 }
-
