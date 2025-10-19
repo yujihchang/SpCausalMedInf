@@ -37,7 +37,7 @@ and (when both effects are requested) cumulative hazard components
 data("expdata", package = "SpCausalMedInf")
 
 ## Use the dataset
-work_ttem <- expdata
+work_ttem <- Data
 
 ## Add a tiny jitter to avoid tied times
 set.seed(123)
@@ -67,4 +67,5 @@ NPMLE_set <- YTH_COX_diff(t, A, X1, X2, D, X,
 # Note: 'setting' supplies values for X[, -1] in that column order.
 }
 }
+
 
