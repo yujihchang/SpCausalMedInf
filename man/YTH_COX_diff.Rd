@@ -64,9 +64,7 @@ NPMLE_set <- YTH_COX_diff(t, A, X1, X2, D, X,
                           EFFECT = c("DE","IE"))
 # center = "SET": fix covariates at specified levels.
 # Here: age = 40, smoker = 1 (yes), alcohol = 0 (no).
-# Note: 'setting' supplies values for X[ , -1 ] in that column order.
-
-
+# Note: 'setting' supplies values for X[, -1] in that column order.
 }
 }
 
