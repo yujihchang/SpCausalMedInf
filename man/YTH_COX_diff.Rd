@@ -52,25 +52,21 @@ A  <- work_ttem$AGE
 t  <- sort(X2)
 
 ## Run
-NPMLE <- YTH_COX_diff(
-  time   = t,
-  A      = A,
-  X1     = X1,
-  X2     = X2,
-  D      = D,
-  X      = X,
-  expor  = c(0,1,0,1),     # ZA=0, ZB=1
-  center = "TRUE",
-  setting = NULL,
-  EFFECT = c("DE","IE")
-)
+NPMLE <- YTH_COX_diff(t, A, X1, X2, D, X,
+                      expor = c(0,1,0,1),
+                      center = "TRUE", setting = NULL,
+                      EFFECT = c("DE","IE"))
+# center = "TRUE": set covariates to their sample means.
 
-## Peek results
-lapply(NPMLE, function(x) if (is.null(x)) NULL else head(x, 6))
+NPMLE_set <- YTH_COX_diff(t, A, X1, X2, D, X,
+                          expor = c(0,1,0,1),
+                          center = "SET", setting = c(40, 1, 0),
+                          EFFECT = c("DE","IE"))
+# center = "SET": fix covariates at specified levels.
+# Here: age = 40, smoker = 1 (yes), alcohol = 0 (no).
+# Note: 'setting' supplies values for X[ , -1 ] in that column order.
 
-## --- Alternative: load expdata.rda from a path (if not using package data/)
-## load("path/to/expdata.rda")  # creates object 'expdata'
-## work_ttem <- expdata
-## (then do the same steps as above)
+
 }
 }
+
