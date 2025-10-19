@@ -1,1 +1,2 @@
-import(survival)
+export(YTH_COX_diff)
+importFrom(survival, Surv, coxph)
