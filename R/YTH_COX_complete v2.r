@@ -227,9 +227,9 @@ if(center=="TRUE") w1_zb1=apply(t(BBW)*c(1,zb1,apply(as.matrix(X[,-1]),2,mean)),
 if(center=="SET")  w1_zb1=apply(t(BBW)*c(1,zb1,setting),2,sum )
 
 pw1_zb1=1/(1+1/exp(w1_zb1))
-Lct=which(is.na(pw1_zb1)==1|pw1_zb1=="NaN")
+Lct=which(is.na(pw1_zb1) | is.nan(pw1_zb1))
 pw1_zb1[Lct]=nYin[Lct]/nrisk[Lct]
-
+ 
 
 pw0_zb1=1-pw1_zb1
 pw0_zb1=pw0_zb1
@@ -242,8 +242,9 @@ if(center=="TRUE") w1_zb2=apply(t(BBW)*c(1,zb2,apply(as.matrix(X[,-1]),2,mean)),
 if(center=="SET")  w1_zb2=apply(t(BBW)*c(1,zb2,setting),2,sum )
 
 pw1_zb2=1/(1+1/exp(w1_zb2))
-Lct=which(is.na(pw1_zb2)==1|pw1_zb1=="NaN")
+Lct=which(is.na(pw1_zb2) | is.nan(pw1_zb2))
 pw1_zb2[Lct]=nYin[Lct]/nrisk[Lct]
+
 
 pw0_zb2=1-pw1_zb2
 pw0_zb2=pw0_zb2
@@ -799,3 +800,4 @@ LA_Sz1_za1=LA_Sz1_za1
 )
 return(report)
 }
+
