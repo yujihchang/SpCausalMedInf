@@ -24,8 +24,8 @@ YTH_COX_diff(time, A, X1, X2, D, X,
 
   \item{D}{Event indicator for \code{X2} (1 = event, 0 = censor).}
 
-  \item{X}{An \eqn{n \times p} matrix. The \textbf{first column} must be the exposure variable. 
-  The remaining \eqn{p-1} columns (if any) are covariates and must appear \textbf{after} the exposure in this order. 
+  \item{X}{An \eqn{n \times p} matrix. The first column must be the exposure variable. 
+  The remaining \eqn{p-1} columns (if any) are covariates and must appear after the exposure in this order. 
   At minimum, \eqn{X} must include the exposure column; covariate columns are optional (i.e., \eqn{p=1} is allowed).}
 
   \item{expor}{Exposure levels \code{c(za1, za2, zb1, zb2)}; e.g., \code{c(0,1,0,1)} or \code{c(1,2,1,2)}.}
@@ -83,6 +83,7 @@ NPMLE_set <- YTH_COX_diff(t, A, X1, X2, D, X,
 # Note: 'setting' supplies values for X[, -1] in that column order.
 }
 }
+
 
 
 
